@@ -3,6 +3,7 @@ const apiRouter = express.Router();
 
 const minionsRouter = require('./minionsRouter');
 const ideasRouter = require('./ideasRouter');
+const meetingsRouter = require('./meetingsRouter');
 
 const morgan = require('morgan');
 
@@ -17,6 +18,8 @@ apiRouter.use('/:modelName',(req,res,next) => {
 apiRouter.use('/minions',minionsRouter);
 
 apiRouter.use('/ideas',ideasRouter);
+
+apiRouter.use('/meetings',meetingsRouter);
 
 
 module.exports = apiRouter;
