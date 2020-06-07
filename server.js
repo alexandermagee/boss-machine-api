@@ -15,6 +15,7 @@ app.use(cors());
 
 // Add middware for parsing request bodies here:
 const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
 
 // Mount your existing apiRouter below at the '/api' path.

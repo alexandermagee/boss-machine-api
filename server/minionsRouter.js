@@ -13,7 +13,8 @@ minionsRouter.get('/',(req,res,next)=>{
 })
 
 minionsRouter.post('/',(req,res,next)=>{
-    const newMinion = req.query
+    let newMinion = req.query;
+    newMinion.salary = Number(newMinion.salary);
     if(newMinion){
         db.addToDatabase(req.modelName,newMinion)
         res.status(201).send();
@@ -32,7 +33,8 @@ minionsRouter.get('/:minionId',(req,res,next)=>{
 })
 
 minionsRouter.put('/:minionId',(req,res,next)=> {
-    const minionToUpdate = req.query;
+    let minionToUpdate = req.query;
+    minionToUpdate.salary = Number(req.query.salary); 
     if(minionToUpdate){
     minionToUpdate.id = req.requestedMinionId
     db.updateInstanceInDatabase(req.modelName,minionToUpdate);
