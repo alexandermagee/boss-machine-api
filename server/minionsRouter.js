@@ -1,11 +1,14 @@
 const express = require('express');
 const minionsRouter = express.Router();
-const db = require('./db')
+const db = require('./db');
+const workRouter = require('./workRouter');
 
 minionsRouter.param('minionId',(req,res,next,minionId) => {
     req.requestedMinionId = minionId;
     next();
 })
+
+minionsRouter.use('/:minionId/work',workRouter)
 
 minionsRouter.get('/',(req,res,next)=>{
     const allMinions = db.getAllFromDatabase(req.modelName)

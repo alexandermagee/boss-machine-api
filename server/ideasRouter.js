@@ -3,7 +3,6 @@ const ideasRouter = express.Router();
 const db = require('./db');
 const checkMillionDollarIdea = require('./checkMillionDollarIdea');
 
-ideasRouter.use(checkMillionDollarIdea);
 
 ideasRouter.param('ideaId',(req,res,next,ideaId) => {
     req.requestedIdeaId = ideaId;
